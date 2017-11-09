@@ -18,7 +18,8 @@
     "prepublishOnly": "tsc -p ./ --outDir dist/",
     "clean": "rm -r ./dist/",
     "test": "mocha --require ts-node/register 'test/**/*.spec.ts'",
-    "document": "typedoc --out docs/code/ lib/ --sourcefile-url-prefix https://github.com/ntzwrk/sks-lib/blob/master/lib/"
+    "document": "typedoc --out docs/code/ lib/ --sourcefile-url-prefix https://github.com/ntzwrk/sks-lib/blob/master/lib/",
+    "runBasicExample": "ts-node ./examples/basic.ts"
   },
   "dependencies": {
     "@types/chai": "^4.0.4",
