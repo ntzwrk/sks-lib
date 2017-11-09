@@ -30,6 +30,13 @@ keyserver.getStats().then(
 });
 ```
 
+To play around with this example:
+```bash
+$ git clone https://github.com/ntzwrk/sks-lib && cd sks-lib/
+$ yarn install
+$ yarn runBasicExample
+```
+
 
 ## Documentation
 
