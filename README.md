@@ -1,5 +1,9 @@
 # sks-lib
 
+| `develop` | `master` |
+| --- | --- |
+| [![Travis Build Status for develop](https://travis-ci.org/ntzwrk/sks-lib.svg?branch=develop)](https://travis-ci.org/ntzwrk/sks-lib) | [![Travis Build Status for master](https://travis-ci.org/ntzwrk/sks-lib.svg?branch=master)](https://travis-ci.org/ntzwrk/sks-lib) |
+
 sks-lib is a Typescript library for interacting with SKS keyservers. Currently there's only support for retrieving a keyserver's stats.
 
 
