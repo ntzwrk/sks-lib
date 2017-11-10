@@ -1,7 +1,7 @@
 import * as requestPromise from 'request-promise-native';
 import * as moment from 'moment';
 
-import {ParseError} from './Error';
+import {ParseError} from './ParseError';
 import {Peer} from './Peer';
 import {Stats} from './Stats';
 
