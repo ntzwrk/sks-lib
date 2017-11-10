@@ -1,9 +1,18 @@
 # sks-lib
 
-| `develop` | `master` |
-|:---:|:---:|
-| [![Travis Build Status for develop](https://travis-ci.org/ntzwrk/sks-lib.svg?branch=develop)](https://travis-ci.org/ntzwrk/sks-lib) | [![Travis Build Status for master](https://travis-ci.org/ntzwrk/sks-lib.svg?branch=master)](https://travis-ci.org/ntzwrk/sks-lib) |
-| [![Dependency Status](https://david-dm.org/ntzwrk/sks-lib/develop/status.svg)](https://david-dm.org/ntzwrk/sks-lib) | [![Dependency Status](https://david-dm.org/ntzwrk/sks-lib/master/status.svg)](https://david-dm.org/ntzwrk/sks-lib) |
+<table>
+	<tr>
+		<td><tt><b>develop</b></tt></td>
+		<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://travis-ci.org/ntzwrk/sks-lib.svg?branch=develop" alt="Travis Build Status for develop"></a></td>
+		<td><a href="https://david-dm.org/ntzwrk/sks-lib/develop"><img src="https://david-dm.org/ntzwrk/sks-lib/develop/status.svg" alt="Dependency Status for develop"></a></td>
+	</tr>
+	<tr>
+		<td><tt><b>master</b></tt></td>
+		<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://travis-ci.org/ntzwrk/sks-lib.svg?branch=master" alt="Travis Build Status for master"></a></td>
+		<td><a href="https://david-dm.org/ntzwrk/sks-lib/master"><img src="https://david-dm.org/ntzwrk/sks-lib/master/status.svg" alt="Dependency Status for master"></a></td>
+	</tr>
+</table>
+<br />
 
 `sks-lib` is a Typescript library for interacting with SKS keyservers. Currently there's only support for retrieving a keyserver's stats.
 
