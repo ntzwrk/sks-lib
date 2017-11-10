@@ -1,7 +1,7 @@
 # sks-lib
 
 | `develop` | `master` |
-| --- | --- |
+|:---:|:---:|
 | [![Travis Build Status for develop](https://travis-ci.org/ntzwrk/sks-lib.svg?branch=develop)](https://travis-ci.org/ntzwrk/sks-lib) | [![Travis Build Status for master](https://travis-ci.org/ntzwrk/sks-lib.svg?branch=master)](https://travis-ci.org/ntzwrk/sks-lib) |
 | [![Dependency Status](https://david-dm.org/ntzwrk/sks-lib/develop/status.svg)](https://david-dm.org/ntzwrk/sks-lib) | [![Dependency Status](https://david-dm.org/ntzwrk/sks-lib/master/status.svg)](https://david-dm.org/ntzwrk/sks-lib) |
 
