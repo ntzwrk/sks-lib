@@ -15,10 +15,11 @@
     "gnupg"
   ],
   "scripts": {
-    "prepublishOnly": "tsc -p ./ --outDir dist/",
+    "build": "tsc",
+    "prepublishOnly": "yarn run build",
     "clean": "rm -r ./dist/",
     "test": "mocha --require ts-node/register 'test/**/*.spec.ts'",
-    "document": "typedoc --out docs/code/ lib/ --sourcefile-url-prefix https://github.com/ntzwrk/sks-lib/blob/master/lib/"
+    "document": "typedoc --out docs/code/ ./lib/ --sourcefile-url-prefix https://github.com/ntzwrk/sks-lib/blob/master/lib/"
   },
   "dependencies": {
     "@types/chai": "^4.0.4",
