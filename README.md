@@ -26,13 +26,33 @@ Just add it with `yarn install sks-lib` (or `npm install sks-lib`) to your proje
 
 ```ts
 import {Keyserver} from 'sks-lib';
+import {Moment} from 'moment';
 
 
 var keyserver = new Keyserver('keyserver.ntzwrk.org');
 
 keyserver.getStats().then(
 	(stats) => {
-		console.log('"%s" is a %s %s keyserver with %s peers.', stats.hostName, stats.software, stats.version, stats.peerCount);
+		var hostName = stats.hostName;
+		var software = stats.software;
+		var version = stats.version;
+		var peerCount = stats.gossipPeerCount;
+
+		console.log('"%s" is a %s %s keyserver with %s gossip peers.', hostName, software, version, peerCount);
+	}
+).catch((reason: Error) => {
+	console.log('Could not connect to "%s:11371"', keyserver.hostName);
+	console.log('%s: %s', reason.name, reason.message);
+});
+
+keyserver.getKeyStats().then(
+	(keyStats) => {
+		var hostName = keyserver.hostName;
+		var totalKeys = keyStats.totalKeys;
+		var newKeys = keyStats.dailyKeys[11].newKeys;
+		var date = keyStats.dailyKeys[11].dateTime.format('MMMM Do YYYY');
+
+		console.log('"%s" has %s total keys and saw %s new keys on %s.', hostName, totalKeys, newKeys, date);
 	}
 ).catch((reason: Error) => {
 	console.log('Could not connect to "%s:11371"', keyserver.hostName);
