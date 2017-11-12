@@ -45,7 +45,7 @@ export class Keyserver {
 		}
 	}
 
-	/** Maps the keyserver's html to a generic promise */
+	/** Maps the keyserver's html to a generic promise. */
 	public mapToView<T>(transformFunction: (html: string) => T): Promise<T> {
 		return this.getStatsHtml().then(transformFunction);
 	}
