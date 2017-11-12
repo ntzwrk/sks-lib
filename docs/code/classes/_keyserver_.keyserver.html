@@ -98,14 +98,18 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keyserver_.keyserver.html#hostname" class="tsd-kind-icon">host<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_keyserver_.keyserver.html#statshtml" class="tsd-kind-icon">stats<wbr>Html</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_keyserver_.keyserver.html#getcustomstats" class="tsd-kind-icon">get<wbr>Custom<wbr>Stats</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_keyserver_.keyserver.html#getkeystats" class="tsd-kind-icon">get<wbr>Key<wbr>Stats</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_keyserver_.keyserver.html#getstats" class="tsd-kind-icon">get<wbr>Stats</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_keyserver_.keyserver.html#parsehtml" class="tsd-kind-icon">parse<wbr>Html</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_keyserver_.keyserver.html#getstatshtml" class="tsd-kind-icon">get<wbr>Stats<wbr>Html</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_keyserver_.keyserver.html#maptoview" class="tsd-kind-icon">map<wbr>ToView</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_keyserver_.keyserver.html#parsekeystatshtml" class="tsd-kind-icon">parse<wbr>Key<wbr>Stats<wbr>Html</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_keyserver_.keyserver.html#parsestatshtml" class="tsd-kind-icon">parse<wbr>Stats<wbr>Html</a></li>
 							</ul>
 						</section>
 					</div>
@@ -123,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Keyserver.ts#L14">Keyserver.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L19">Keyserver.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -150,7 +154,7 @@
 					<div class="tsd-signature tsd-kind-icon">host<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Keyserver.ts#L14">Keyserver.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L16">Keyserver.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -159,52 +163,43 @@
 						</div>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="statshtml" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> stats<wbr>Html</h3>
+					<div class="tsd-signature tsd-kind-icon">stats<wbr>Html<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Option</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;none()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L19">Keyserver.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The keyserver&#39;s raw stats html</p>
+						</div>
+					</div>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getcustomstats" class="tsd-anchor"></a>
-					<h3>get<wbr>Custom<wbr>Stats</h3>
+					<a name="getkeystats" class="tsd-anchor"></a>
+					<h3>get<wbr>Key<wbr>Stats</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Custom<wbr>Stats<span class="tsd-signature-symbol">(</span>lambdaFunction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Key<wbr>Stats<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_keystats_.keystats.html" class="tsd-signature-type">KeyStats</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Keyserver.ts#L27">Keyserver.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L59">Keyserver.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Retrieves the server&#39;s stats and returns a promise, but takes a custom parse function</p>
+									<p>Retrieves the server&#39;s key stats and returns a Promise<KeyStats>, uses the default parsing method (<code>parseKeyStatsHtml</code>).</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>lambdaFunction: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>html: <span class="tsd-signature-type">string</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_keystats_.keystats.html" class="tsd-signature-type">KeyStats</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -218,34 +213,136 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Keyserver.ts#L22">Keyserver.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L54">Keyserver.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Retrieves the server&#39;s stats and returns a promise</p>
+									<p>Retrieves the server&#39;s stats and returns a Promise<Stats>, uses the default parsing method (<code>parseStatsHtml</code>).</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="parsehtml" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse<wbr>Html</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Html<span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="getstatshtml" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Stats<wbr>Html</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Stats<wbr>Html<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Keyserver.ts#L40">Keyserver.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L27">Keyserver.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Parses given html into a Stats object, throws ParseError</p>
+									<p>Retrieves the keyserver&#39;s stats html if necessary and then returns it as Promise<string>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="maptoview" class="tsd-anchor"></a>
+					<h3>map<wbr>ToView</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">map<wbr>ToView&lt;T&gt;<span class="tsd-signature-symbol">(</span>transformFunction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L49">Keyserver.ts:49</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Maps the keyserver&#39;s html to a generic promise</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>transformFunction: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>html: <span class="tsd-signature-type">string</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="parsekeystatshtml" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse<wbr>Key<wbr>Stats<wbr>Html</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Key<wbr>Stats<wbr>Html<span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_keystats_.keystats.html" class="tsd-signature-type">KeyStats</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L206">Keyserver.ts:206</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parses given html into a KeyStats object, throws ParseError.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>html: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_keystats_.keystats.html" class="tsd-signature-type">KeyStats</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="parsestatshtml" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse<wbr>Stats<wbr>Html</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Stats<wbr>Html<span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Keyserver.ts#L64">Keyserver.ts:64</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parses given html into a Stats object, throws ParseError.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -267,10 +364,13 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_error_.html">"<wbr>Error"</a>
+						<a href="../modules/_keystats_.html">"<wbr>Key<wbr>Stats"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_keyserver_.html">"<wbr>Keyserver"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_parseerror_.html">"<wbr>Parse<wbr>Error"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_peer_.html">"<wbr>Peer"</a>
@@ -296,14 +396,26 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_keyserver_.keyserver.html#hostname" class="tsd-kind-icon">host<wbr>Name</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_keyserver_.keyserver.html#statshtml" class="tsd-kind-icon">stats<wbr>Html</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_keyserver_.keyserver.html#getcustomstats" class="tsd-kind-icon">get<wbr>Custom<wbr>Stats</a>
+								<a href="_keyserver_.keyserver.html#getkeystats" class="tsd-kind-icon">get<wbr>Key<wbr>Stats</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_keyserver_.keyserver.html#getstats" class="tsd-kind-icon">get<wbr>Stats</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_keyserver_.keyserver.html#getstatshtml" class="tsd-kind-icon">get<wbr>Stats<wbr>Html</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="_keyserver_.keyserver.html#maptoview" class="tsd-kind-icon">map<wbr>ToView</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_keyserver_.keyserver.html#parsehtml" class="tsd-kind-icon">parse<wbr>Html</a>
+								<a href="_keyserver_.keyserver.html#parsekeystatshtml" class="tsd-kind-icon">parse<wbr>Key<wbr>Stats<wbr>Html</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_keyserver_.keyserver.html#parsestatshtml" class="tsd-kind-icon">parse<wbr>Stats<wbr>Html</a>
 							</li>
 						</ul>
 					</li>

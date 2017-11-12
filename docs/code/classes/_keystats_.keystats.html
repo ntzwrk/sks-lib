@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Peer | sks-lib</title>
+	<title>KeyStats | sks-lib</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_peer_.html">&quot;Peer&quot;</a>
+					<a href="../modules/_keystats_.html">&quot;KeyStats&quot;</a>
 				</li>
 				<li>
-					<a href="_peer_.peer.html">Peer</a>
+					<a href="_keystats_.keystats.html">KeyStats</a>
 				</li>
 			</ul>
-			<h1>Class Peer</h1>
+			<h1>Class KeyStats</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Class representing a keyserver&#39;s peer</p>
+						<p>Class representing key stats of a keyserver</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Peer</span>
+						<span class="target">KeyStats</span>
 					</li>
 				</ul>
 			</section>
@@ -91,14 +91,15 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_peer_.peer.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_keystats_.keystats.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_peer_.peer.html#host" class="tsd-kind-icon">host</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_peer_.peer.html#port" class="tsd-kind-icon">port</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keystats_.keystats.html#dailykeys" class="tsd-kind-icon">daily<wbr>Keys</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keystats_.keystats.html#hourlykeys" class="tsd-kind-icon">hourly<wbr>Keys</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keystats_.keystats.html#totalkeys" class="tsd-kind-icon">total<wbr>Keys</a></li>
 							</ul>
 						</section>
 					</div>
@@ -110,30 +111,33 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Peer<span class="tsd-signature-symbol">(</span>host<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, port<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_peer_.peer.html" class="tsd-signature-type">Peer</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Key<wbr>Stats<span class="tsd-signature-symbol">(</span>totalKeys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, dailyKeys<span class="tsd-signature-symbol">: </span><a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a><span class="tsd-signature-symbol">[]</span>, hourlyKeys<span class="tsd-signature-symbol">: </span><a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_keystats_.keystats.html" class="tsd-signature-type">KeyStats</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Peer.ts#L9">Peer.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L15">KeyStats.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Constructor for creating a new peer</p>
+									<p>Constructor for creating a new key stats object</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>host: <span class="tsd-signature-type">string</span></h5>
+									<h5>totalKeys: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5>port: <span class="tsd-signature-type">number</span></h5>
+									<h5>dailyKeys: <a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>hourlyKeys: <a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_peer_.peer.html" class="tsd-signature-type">Peer</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_keystats_.keystats.html" class="tsd-signature-type">KeyStats</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -141,32 +145,47 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="host" class="tsd-anchor"></a>
-					<h3>host</h3>
-					<div class="tsd-signature tsd-kind-icon">host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="dailykeys" class="tsd-anchor"></a>
+					<h3>daily<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">daily<wbr>Keys<span class="tsd-signature-symbol">:</span> <a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Peer.ts#L6">Peer.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L12">KeyStats.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The peer&#39;s hostname</p>
+							<p>The keyserver&#39;s key changes on a daily basis</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="port" class="tsd-anchor"></a>
-					<h3>port</h3>
-					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="hourlykeys" class="tsd-anchor"></a>
+					<h3>hourly<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">hourly<wbr>Keys<span class="tsd-signature-symbol">:</span> <a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Peer.ts#L9">Peer.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L15">KeyStats.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The peer&#39;s port</p>
+							<p>The keyserver&#39;s key changes on a hourly basis</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="totalkeys" class="tsd-anchor"></a>
+					<h3>total<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">total<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L9">KeyStats.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The keyserver&#39;s total number of keys</p>
 						</div>
 					</div>
 				</section>
@@ -178,13 +197,16 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_error_.html">"<wbr>Error"</a>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_keystats_.html">"<wbr>Key<wbr>Stats"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_keyserver_.html">"<wbr>Keyserver"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_parseerror_.html">"<wbr>Parse<wbr>Error"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_peer_.html">"<wbr>Peer"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -200,21 +222,27 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_peer_.peer.html" class="tsd-kind-icon">Peer</a>
+						<a href="_keystats_.keystats.html" class="tsd-kind-icon">Key<wbr>Stats</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_peer_.peer.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_keystats_.keystats.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_peer_.peer.html#host" class="tsd-kind-icon">host</a>
+								<a href="_keystats_.keystats.html#dailykeys" class="tsd-kind-icon">daily<wbr>Keys</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_peer_.peer.html#port" class="tsd-kind-icon">port</a>
+								<a href="_keystats_.keystats.html#hourlykeys" class="tsd-kind-icon">hourly<wbr>Keys</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_keystats_.keystats.html#totalkeys" class="tsd-kind-icon">total<wbr>Keys</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_keystats_.keystatsentry.html" class="tsd-kind-icon">Key<wbr>Stats<wbr>Entry</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

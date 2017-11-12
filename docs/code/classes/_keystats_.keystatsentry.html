@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;index&quot; | sks-lib</title>
+	<title>KeyStatsEntry | sks-lib</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,16 +56,140 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_index_.html">&quot;index&quot;</a>
+					<a href="../modules/_keystats_.html">&quot;KeyStats&quot;</a>
+				</li>
+				<li>
+					<a href="_keystats_.keystatsentry.html">KeyStatsEntry</a>
 				</li>
 			</ul>
-			<h1>External module &quot;index&quot;</h1>
+			<h1>Class KeyStatsEntry</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Class representing a key stats entry</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">KeyStatsEntry</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_keystats_.keystatsentry.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keystats_.keystatsentry.html#datetime" class="tsd-kind-icon">date<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keystats_.keystatsentry.html#newkeys" class="tsd-kind-icon">new<wbr>Keys</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_keystats_.keystatsentry.html#updatedkeys" class="tsd-kind-icon">updated<wbr>Keys</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Key<wbr>Stats<wbr>Entry<span class="tsd-signature-symbol">(</span>dateTime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Moment</span>, newKeys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, updatedKeys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L36">KeyStats.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Constructor for creating a new key stat entry object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>dateTime: <span class="tsd-signature-type">Moment</span></h5>
+								</li>
+								<li>
+									<h5>newKeys: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>updatedKeys: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_keystats_.keystatsentry.html" class="tsd-signature-type">KeyStatsEntry</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="datetime" class="tsd-anchor"></a>
+					<h3>date<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">date<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Moment</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L30">KeyStats.ts:30</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The time of this data set</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="newkeys" class="tsd-anchor"></a>
+					<h3>new<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L33">KeyStats.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>New keys that occurred at this time</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="updatedkeys" class="tsd-anchor"></a>
+					<h3>updated<wbr>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">updated<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/KeyStats.ts#L36">KeyStats.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Updated keys that occurred at this time</p>
+						</div>
+					</div>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -73,28 +197,52 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_keystats_.html">"<wbr>Key<wbr>Stats"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_keyserver_.html">"<wbr>Keyserver"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_parseerror_.html">"<wbr>Parse<wbr>Error"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_peer_.html">"<wbr>Peer"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_stats_.html">"<wbr>Stats"</a>
-					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
+						<a href="../modules/_keystats_.html">"<wbr>Key<wbr>Stats"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_keyserver_.html">"<wbr>Keyserver"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_parseerror_.html">"<wbr>Parse<wbr>Error"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_peer_.html">"<wbr>Peer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_stats_.html">"<wbr>Stats"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_index_.html">"index"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_keystats_.keystats.html" class="tsd-kind-icon">Key<wbr>Stats</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_keystats_.keystatsentry.html" class="tsd-kind-icon">Key<wbr>Stats<wbr>Entry</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_keystats_.keystatsentry.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_keystats_.keystatsentry.html#datetime" class="tsd-kind-icon">date<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_keystats_.keystatsentry.html#newkeys" class="tsd-kind-icon">new<wbr>Keys</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_keystats_.keystatsentry.html#updatedkeys" class="tsd-kind-icon">updated<wbr>Keys</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>

@@ -65,18 +65,51 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="sks-lib">sks-lib</h1>
-				<p>sks-lib is a Typescript library for interacting with SKS keyservers. Currently there&#39;s only support for retrieving a keyserver&#39;s stats.</p>
+				<p><table>
+						<tr>
+							<td><tt><b>develop</b></tt></td>
+							<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://travis-ci.org/ntzwrk/sks-lib.svg?branch=develop" alt="Travis Build Status for develop"></a></td>
+							<td><a href="https://david-dm.org/ntzwrk/sks-lib/develop"><img src="https://david-dm.org/ntzwrk/sks-lib/develop/status.svg" alt="Dependency Status for develop"></a></td>
+						</tr>
+						<tr>
+							<td><tt><b>master</b></tt></td>
+							<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://travis-ci.org/ntzwrk/sks-lib.svg?branch=master" alt="Travis Build Status for master"></a></td>
+							<td><a href="https://david-dm.org/ntzwrk/sks-lib/master"><img src="https://david-dm.org/ntzwrk/sks-lib/master/status.svg" alt="Dependency Status for master"></a></td>
+						</tr>
+					</table>
+				<br /></p>
+				<p><code>sks-lib</code> is a Typescript library for interacting with SKS keyservers. Currently there&#39;s only support for retrieving a keyserver&#39;s stats.</p>
 				<h2 id="installation">Installation</h2>
 				<p>Just add it with <code>yarn install sks-lib</code> (or <code>npm install sks-lib</code>) to your project. It ships the generated Javascript code along with Typescript&#39;s declaration files. The Typescript code itself lives in <code>lib/</code>.</p>
 				<h2 id="example-usage">Example usage</h2>
 				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> {Keyserver} <span class="hljs-keyword">from</span> <span class="hljs-string">'sks-lib'</span>;
+<span class="hljs-keyword">import</span> {Moment} <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
 
 
 <span class="hljs-keyword">var</span> keyserver = <span class="hljs-keyword">new</span> Keyserver(<span class="hljs-string">'keyserver.ntzwrk.org'</span>);
 
 keyserver.getStats().then(
     <span class="hljs-function">(<span class="hljs-params">stats</span>) =&gt;</span> {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'"%s" is a %s %s keyserver with %s peers.'</span>, stats.hostName, stats.software, stats.version, stats.peerCount);
+        <span class="hljs-keyword">var</span> hostName = stats.hostName;
+        <span class="hljs-keyword">var</span> software = stats.software;
+        <span class="hljs-keyword">var</span> version = stats.version;
+        <span class="hljs-keyword">var</span> peerCount = stats.gossipPeerCount;
+
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'"%s" is a %s %s keyserver with %s gossip peers.'</span>, hostName, software, version, peerCount);
+    }
+).catch(<span class="hljs-function">(<span class="hljs-params">reason: <span class="hljs-built_in">Error</span></span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Could not connect to "%s:11371"'</span>, keyserver.hostName);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'%s: %s'</span>, reason.name, reason.message);
+});
+
+keyserver.getKeyStats().then(
+    <span class="hljs-function">(<span class="hljs-params">keyStats</span>) =&gt;</span> {
+        <span class="hljs-keyword">var</span> hostName = keyserver.hostName;
+        <span class="hljs-keyword">var</span> totalKeys = keyStats.totalKeys;
+        <span class="hljs-keyword">var</span> newKeys = keyStats.dailyKeys[<span class="hljs-number">11</span>].newKeys;
+        <span class="hljs-keyword">var</span> date = keyStats.dailyKeys[<span class="hljs-number">11</span>].dateTime.format(<span class="hljs-string">'MMMM Do YYYY'</span>);
+
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'"%s" has %s total keys and saw %s new keys on %s.'</span>, hostName, totalKeys, newKeys, date);
     }
 ).catch(<span class="hljs-function">(<span class="hljs-params">reason: <span class="hljs-built_in">Error</span></span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Could not connect to "%s:11371"'</span>, keyserver.hostName);
@@ -103,10 +136,13 @@ keyserver.getStats().then(
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_error_.html">"<wbr>Error"</a>
+						<a href="modules/_keystats_.html">"<wbr>Key<wbr>Stats"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_keyserver_.html">"<wbr>Keyserver"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_parseerror_.html">"<wbr>Parse<wbr>Error"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_peer_.html">"<wbr>Peer"</a>

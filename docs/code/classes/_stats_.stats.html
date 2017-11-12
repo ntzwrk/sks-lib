@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Class representing stats of a given keyserver</p>
+						<p>Class representing stats of a keyserver</p>
 					</div>
 				</div>
 			</section>
@@ -98,12 +98,14 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#debuglevel" class="tsd-kind-icon">debug<wbr>Level</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#gossippeercount" class="tsd-kind-icon">gossip<wbr>Peer<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#gossippeers" class="tsd-kind-icon">gossip<wbr>Peers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#hostname" class="tsd-kind-icon">host<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#httpport" class="tsd-kind-icon">http<wbr>Port</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#keys" class="tsd-kind-icon">keys</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#mailsyncpeercount" class="tsd-kind-icon">mailsync<wbr>Peer<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#mailsyncpeers" class="tsd-kind-icon">mailsync<wbr>Peers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#nodename" class="tsd-kind-icon">node<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#peercount" class="tsd-kind-icon">peer<wbr>Count</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#peers" class="tsd-kind-icon">peers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#reconport" class="tsd-kind-icon">recon<wbr>Port</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#servercontact" class="tsd-kind-icon">server<wbr>Contact</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_stats_.stats.html#software" class="tsd-kind-icon">software</a></li>
@@ -120,13 +122,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Stats<span class="tsd-signature-symbol">(</span>software<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, hostName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, nodeName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, serverContact<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, httpPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, reconPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, debugLevel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, keys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, statsTime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Moment</span>, peers<span class="tsd-signature-symbol">: </span><a href="_peer_.peer.html" class="tsd-signature-type">Peer</a><span class="tsd-signature-symbol">[]</span>, peerCount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Stats<span class="tsd-signature-symbol">(</span>software<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, hostName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, nodeName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, serverContact<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, httpPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, reconPort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, debugLevel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, keys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, statsTime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Moment</span>, gossipPeers<span class="tsd-signature-symbol">: </span><a href="_peer_.gossippeer.html" class="tsd-signature-type">GossipPeer</a><span class="tsd-signature-symbol">[]</span>, gossipPeerCount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, mailsyncPeers<span class="tsd-signature-symbol">: </span><a href="_peer_.mailsyncpeer.html" class="tsd-signature-type">MailsyncPeer</a><span class="tsd-signature-symbol">[]</span>, mailsyncPeerCount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L44">Stats.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L50">Stats.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -167,10 +169,16 @@
 									<h5>statsTime: <span class="tsd-signature-type">Moment</span></h5>
 								</li>
 								<li>
-									<h5>peers: <a href="_peer_.peer.html" class="tsd-signature-type">Peer</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>gossipPeers: <a href="_peer_.gossippeer.html" class="tsd-signature-type">GossipPeer</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
-									<h5>peerCount: <span class="tsd-signature-type">number</span></h5>
+									<h5>gossipPeerCount: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>mailsyncPeers: <a href="_peer_.mailsyncpeer.html" class="tsd-signature-type">MailsyncPeer</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>mailsyncPeerCount: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_stats_.stats.html" class="tsd-signature-type">Stats</a></h4>
@@ -186,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">debug<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L32">Stats.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L32">Stats.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -196,12 +204,42 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="gossippeercount" class="tsd-anchor"></a>
+					<h3>gossip<wbr>Peer<wbr>Count</h3>
+					<div class="tsd-signature tsd-kind-icon">gossip<wbr>Peer<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L44">Stats.ts:44</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The keyserver&#39;s gossip peer count</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="gossippeers" class="tsd-anchor"></a>
+					<h3>gossip<wbr>Peers</h3>
+					<div class="tsd-signature tsd-kind-icon">gossip<wbr>Peers<span class="tsd-signature-symbol">:</span> <a href="_peer_.gossippeer.html" class="tsd-signature-type">GossipPeer</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L41">Stats.ts:41</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The keyserver&#39;s gossip peers</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="hostname" class="tsd-anchor"></a>
 					<h3>host<wbr>Name</h3>
 					<div class="tsd-signature tsd-kind-icon">host<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L17">Stats.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L17">Stats.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,7 +254,7 @@
 					<div class="tsd-signature tsd-kind-icon">http<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L26">Stats.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L26">Stats.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -231,7 +269,7 @@
 					<div class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L35">Stats.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L35">Stats.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -241,12 +279,42 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="mailsyncpeercount" class="tsd-anchor"></a>
+					<h3>mailsync<wbr>Peer<wbr>Count</h3>
+					<div class="tsd-signature tsd-kind-icon">mailsync<wbr>Peer<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L50">Stats.ts:50</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The keyserver&#39;s mailsync peer count</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="mailsyncpeers" class="tsd-anchor"></a>
+					<h3>mailsync<wbr>Peers</h3>
+					<div class="tsd-signature tsd-kind-icon">mailsync<wbr>Peers<span class="tsd-signature-symbol">:</span> <a href="_peer_.mailsyncpeer.html" class="tsd-signature-type">MailsyncPeer</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L47">Stats.ts:47</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The keyserver&#39;s mailsync peers</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="nodename" class="tsd-anchor"></a>
 					<h3>node<wbr>Name</h3>
 					<div class="tsd-signature tsd-kind-icon">node<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L20">Stats.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L20">Stats.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -256,42 +324,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="peercount" class="tsd-anchor"></a>
-					<h3>peer<wbr>Count</h3>
-					<div class="tsd-signature tsd-kind-icon">peer<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L44">Stats.ts:44</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The keyserver&#39;s peer count</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="peers" class="tsd-anchor"></a>
-					<h3>peers</h3>
-					<div class="tsd-signature tsd-kind-icon">peers<span class="tsd-signature-symbol">:</span> <a href="_peer_.peer.html" class="tsd-signature-type">Peer</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L41">Stats.ts:41</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The keyserver&#39;s peers</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="reconport" class="tsd-anchor"></a>
 					<h3>recon<wbr>Port</h3>
 					<div class="tsd-signature tsd-kind-icon">recon<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L29">Stats.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L29">Stats.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -306,7 +344,7 @@
 					<div class="tsd-signature tsd-kind-icon">server<wbr>Contact<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L23">Stats.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L23">Stats.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -321,7 +359,7 @@
 					<div class="tsd-signature tsd-kind-icon">software<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L11">Stats.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L11">Stats.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -336,7 +374,7 @@
 					<div class="tsd-signature tsd-kind-icon">stats<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Moment</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L38">Stats.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L38">Stats.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -351,7 +389,7 @@
 					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/master/lib/Stats.ts#L14">Stats.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/ntzwrk/sks-lib/blob/0064dc0/lib/Stats.ts#L14">Stats.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -369,10 +407,13 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_error_.html">"<wbr>Error"</a>
+						<a href="../modules/_keystats_.html">"<wbr>Key<wbr>Stats"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_keyserver_.html">"<wbr>Keyserver"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_parseerror_.html">"<wbr>Parse<wbr>Error"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_peer_.html">"<wbr>Peer"</a>
@@ -399,6 +440,12 @@
 								<a href="_stats_.stats.html#debuglevel" class="tsd-kind-icon">debug<wbr>Level</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_stats_.stats.html#gossippeercount" class="tsd-kind-icon">gossip<wbr>Peer<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_stats_.stats.html#gossippeers" class="tsd-kind-icon">gossip<wbr>Peers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_stats_.stats.html#hostname" class="tsd-kind-icon">host<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -408,13 +455,13 @@
 								<a href="_stats_.stats.html#keys" class="tsd-kind-icon">keys</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_stats_.stats.html#mailsyncpeercount" class="tsd-kind-icon">mailsync<wbr>Peer<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_stats_.stats.html#mailsyncpeers" class="tsd-kind-icon">mailsync<wbr>Peers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_stats_.stats.html#nodename" class="tsd-kind-icon">node<wbr>Name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_stats_.stats.html#peercount" class="tsd-kind-icon">peer<wbr>Count</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_stats_.stats.html#peers" class="tsd-kind-icon">peers</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_stats_.stats.html#reconport" class="tsd-kind-icon">recon<wbr>Port</a>
