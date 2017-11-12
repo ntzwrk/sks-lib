@@ -2,8 +2,9 @@ import * as requestPromise from 'request-promise-native';
 import * as moment from 'moment';
 import {Option, option, none} from 'm.m';
 
+import {KeyStats, KeyStatsEntry} from './KeyStats';
 import {ParseError} from './ParseError';
-import {Peer} from './Peer';
+import {GossipPeer, MailsyncPeer} from './Peer';
 import {Stats} from './Stats';
 
 
@@ -75,8 +76,10 @@ export class Keyserver {
 		var debugLevel: number;
 		var keys: number;
 		var statsTime: moment.Moment;
-		var peers: Peer[] = [];
-		var peerCount: number;
+		var gossipPeers: GossipPeer[] = [];
+		var gossipPeerCount: number;
+		var mailsyncPeers: MailsyncPeer[] = [];
+		var mailsyncPeerCount: number;
 
 
 		// software
@@ -162,17 +165,32 @@ export class Keyserver {
 			throw new ParseError('statsTime');
 		}
 
-		// peers & peerCount
+		// gossipPeers & gossipPeerCount
 		match = html.match(/Gossip Peers([\s\S]*?)<\/table>/);
 		if(match) {
 			var regexPeers = /<tr>[\s\S]*?<td>([^<>]+)[ :]([0-9]+)/g;
 			var peer;
 
 			while(peer = regexPeers.exec(match[1])) {
-				peers.push(new Peer(peer[1].trim(), parseInt(peer[2], 10)));
+				gossipPeers.push(new GossipPeer(peer[1].trim(), parseInt(peer[2], 10)));
 			}
 
-			peerCount = peers.length;
+			gossipPeerCount = gossipPeers.length;
+		} else {
+			throw new ParseError('peers');
+		}
+
+		// mailsyncPeers & mailsyncPeerCount
+		match = html.match(/Outgoing Mailsync Peers([\s\S]*?)<\/table>/);
+		if(match) {
+			var regexPeers = /<tr>[\s\S]*?<td>([^<>]+)/g;
+			var peer;
+
+			while(peer = regexPeers.exec(match[1])) {
+				mailsyncPeers.push(new MailsyncPeer(peer[1].trim()));
+			}
+
+			mailsyncPeerCount = mailsyncPeers.length;
 		} else {
 			throw new ParseError('peers');
 		}

@@ -1,6 +1,6 @@
 import {Moment} from 'moment';
 
-import {Peer} from './Peer';
+import {GossipPeer, MailsyncPeer} from './Peer';
 
 
 /**
@@ -37,17 +37,24 @@ export class Stats {
 	/** The keyserver's time of stats generation */
 	public readonly statsTime: Moment;
 
-	/** The keyserver's peers */
-	public readonly peers: Peer[];
+	/** The keyserver's gossip peers */
+	public readonly gossipPeers: GossipPeer[];
 
-	/** The keyserver's peer count */
-	public readonly peerCount: number;
+	/** The keyserver's gossip peer count */
+	public readonly gossipPeerCount: number;
+
+	/** The keyserver's mailsync peers */
+	public readonly mailsyncPeers: MailsyncPeer[];
+
+	/** The keyserver's mailsync peer count */
+	public readonly mailsyncPeerCount: number;
 
 	/** Constructor for creating a new stats object */
 	constructor(
 		software: string, version: string, hostName: string, nodeName: string,
 		serverContact: string, httpPort: number, reconPort: number, debugLevel: number,
-		keys: number, statsTime: Moment, peers: Peer[], peerCount: number
+		keys: number, statsTime: Moment, gossipPeers: GossipPeer[], gossipPeerCount: number,
+		mailsyncPeers: MailsyncPeer[], mailsyncPeerCount: number
 	) {
 		this.software = software;
 		this.version = version;
@@ -59,7 +66,9 @@ export class Stats {
 		this.debugLevel = debugLevel;
 		this.keys = keys;
 		this.statsTime = statsTime;
-		this.peers = peers;
-		this.peerCount = peerCount;
+		this.gossipPeers = gossipPeers;
+		this.gossipPeerCount = gossipPeerCount;
+		this.mailsyncPeers = mailsyncPeers;
+		this.mailsyncPeerCount = mailsyncPeerCount;
 	}
 }

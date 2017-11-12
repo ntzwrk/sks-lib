@@ -2,16 +2,34 @@ import * as chai from 'chai';
 import * as fs from 'fs';
 import * as moment from 'moment';
 
-import {Keyserver, ParseError, Peer, Stats} from '../lib/index';
+import {
+	Keyserver,
+	KeyStats,
+	KeyStatsEntry,
+	GossipPeer,
+	MailsyncPeer,
+	ParseError,
+	Stats
+} from '../lib/index';
 
 
 describe('Keyserver', () => {
 	var validHtml: string;
+	var validHtmlWithMailsyncPeers: string;
+
 	var validStats: Stats;
+	var validStatsWithMailsyncPeers: Stats;
+
+	var validKeyStats: KeyStats;
 
 	before(() => {
 		validHtml = fs.readFileSync('test/assets/valid_keyserver.ntzwrk.org_2017-11-09.html','utf8');
-		validStats = Keyserver.parseHtml(validHtml);
+		validHtmlWithMailsyncPeers = fs.readFileSync('test/assets/valid_keys.digitalis.org_2017-11-12.html','utf8');
+
+		validStats = Keyserver.parseStatsHtml(validHtml);
+		validStatsWithMailsyncPeers = Keyserver.parseStatsHtml(validHtmlWithMailsyncPeers);
+
+		validKeyStats = Keyserver.parseKeyStatsHtml(validHtml);
 	});
 
 	it('has correct attributes', () => {
@@ -30,8 +48,25 @@ describe('Keyserver', () => {
 
 		chai.expect(validStats.statsTime).to.deep.equal(moment('2017-11-09 16:25:04 CET', 'YYYY-MM-DD HH:mm:ss'));
 
-		chai.expect(validStats.peerCount).to.equal(18);
-		chai.expect(validStats.peers[0]).to.deep.equal(new Peer('keys.fspproductions.biz', 11370));
+		chai.expect(validStats.gossipPeerCount).to.equal(18);
+		chai.expect(validStats.gossipPeers[0]).to.deep.equal(new GossipPeer('keys.fspproductions.biz', 11370));
+
+		chai.expect(validStats.mailsyncPeerCount).to.equal(0);
+		chai.expect(validStats.mailsyncPeers).to.deep.equal([]);
+		chai.expect(validStatsWithMailsyncPeers.mailsyncPeerCount).to.equal(1);
+		chai.expect(validStatsWithMailsyncPeers.mailsyncPeers[0]).to.deep.equal(new MailsyncPeer('pgp-public-keys@the.earth.li'));
+	});
+
+	it('fails correctly retrieving stats from invalid html', () => {
+		chai.expect(() => Keyserver.parseStatsHtml('')).to.throw(ParseError);
+	});
+
+	it('retrieves correctly key stats', () => {
+		chai.expect(validKeyStats.totalKeys).to.equal(4849636);
+		chai.expect(validKeyStats.dailyKeys[0]).to.deep.equal(new KeyStatsEntry(moment('2017-11-09', 'YYYY-MM-DD'), 1118, 516));
+		chai.expect(validKeyStats.dailyKeys[30]).to.deep.equal(new KeyStatsEntry(moment('2017-10-10', 'YYYY-MM-DD'), 1224, 859));
+		chai.expect(validKeyStats.hourlyKeys[0]).to.deep.equal(new KeyStatsEntry(moment('2017-11-09 16', 'YYYY-MM-DD HH'), 42, 23));
+		chai.expect(validKeyStats.hourlyKeys[736]).to.deep.equal(new KeyStatsEntry(moment('2017-10-10 01', 'YYYY-MM-DD HH'), 42, 21));
 	});
 
 	it('fails correctly', () => {
