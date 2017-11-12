@@ -45,24 +45,23 @@ export class Keyserver {
 		}
 	}
 
-	/** Retrieves the server's stats and returns a promise, but takes a custom parse function */
-	public getCustomStats(lambdaFunction: (html: string) => Stats): Promise<Stats> {
-		var options: requestPromise.Options = {
-			uri: 'http://' + this.hostName + ':11371/pks/lookup?op=stats',
-			timeout: 4000,
-			headers: {
-				'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
-			}
-		};
-
-		return requestPromise.get(options).then(lambdaFunction);
+	/** Maps the keyserver's html to a generic promise */
+	public mapToView<T>(transformFunction: (html: string) => T): Promise<T> {
+		return this.getStatsHtml().then(transformFunction);
 	}
 
-	/** Parses given html into a Stats object, throws ParseError */
-	public static parseHtml(html: string): Stats {
-		// TODO: mailsync
-		// TODO: key fluctuation
+	/** Retrieves the server's stats and returns a Promise<Stats>, uses the default parsing method (`parseStatsHtml`). */
+	public getStats(): Promise<Stats> {
+		return this.mapToView(Keyserver.parseStatsHtml);
+	}
 
+	/** Retrieves the server's key stats and returns a Promise<KeyStats>, uses the default parsing method (`parseKeyStatsHtml`). */
+	public getKeyStats(): Promise<KeyStats> {
+		return this.mapToView(Keyserver.parseKeyStatsHtml);
+	}
+
+	/** Parses given html into a Stats object, throws ParseError. */
+	public static parseStatsHtml(html: string): Stats {
 		var match: RegExpMatchArray | null;
 		var matchVersion: RegExpMatchArray | null;
 
@@ -198,7 +197,67 @@ export class Keyserver {
 
 		return new Stats(
 			software, version, hostName, nodeName, serverContact, httpPort,
-			reconPort, debugLevel, keys, statsTime, peers, peerCount
+			reconPort, debugLevel, keys, statsTime, gossipPeers, gossipPeerCount,
+			mailsyncPeers, mailsyncPeerCount
 		);
+	}
+
+	/** Parses given html into a KeyStats object, throws ParseError. */
+	public static parseKeyStatsHtml(html: string): KeyStats {
+		var match: RegExpMatchArray | null;
+
+		var totalKeys: number;
+		var dailyKeys: KeyStatsEntry[] = [];
+		var hourlyKeys: KeyStatsEntry[] = [];
+
+
+		// totalKeys
+		match = html.match(/Total number of keys: ([0-9]+)/);
+		if (match) {
+			totalKeys = parseInt(match[1], 10);
+		} else {
+			throw new ParseError('totalKeys');
+		}
+
+		// statsTime
+		match = html.match(/Taken at (.+?):?[<\n]/);
+		if(match) {
+			moment(match[1], 'YYYY-MM-DD HH:mm:ss');
+		} else {
+			throw new ParseError('statsTime');
+		}
+
+		// dailyKeys
+		match = html.match(/Daily Histogram[\s\S]*<\/table>/);
+		if(match) {
+			var regexEntry = /<tr>[\s\S]*?<td>(\d{4}-\d{2}-\d{2})<\/td><td>(\d+)<\/td><td>(\d+)<\/td>/g;
+			var entry;
+			var dateTime: moment.Moment;
+
+			while(entry = regexEntry.exec(match[0])) {
+				dateTime = moment(entry[1].trim(), 'YYYY-MM-DD');
+				dailyKeys.push(new KeyStatsEntry(dateTime, parseInt(entry[2], 10), parseInt(entry[3], 10)));
+			}
+		} else {
+			throw new ParseError('dailyKeys');
+		}
+
+		// hourlyKeys
+		match = html.match(/Hourly Histogram[\s\S]*<\/table>/);
+		if(match) {
+			var regexEntry = /<tr>[\s\S]*?<td>(\d{4}-\d{2}-\d{2} \d{2})<\/td><td>(\d+)<\/td><td>(\d+)<\/td>/g;
+			var entry;
+			var dateTime: moment.Moment;
+
+			while(entry = regexEntry.exec(match[0])) {
+				dateTime = moment(entry[1].trim(), 'YYYY-MM-DD HH');
+				hourlyKeys.push(new KeyStatsEntry(dateTime, parseInt(entry[2], 10), parseInt(entry[3], 10)));
+			}
+		} else {
+			throw new ParseError('hourlyKeys');
+		}
+
+
+		return new KeyStats(totalKeys, dailyKeys, hourlyKeys);
 	}
 }

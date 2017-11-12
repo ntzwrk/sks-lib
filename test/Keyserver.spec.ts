@@ -32,7 +32,7 @@ describe('Keyserver', () => {
 		validKeyStats = Keyserver.parseKeyStatsHtml(validHtml);
 	});
 
-	it('has correct attributes', () => {
+	it('retrieves correctly stats', () => {
 		chai.expect(validStats.hostName).to.equal('keyserver.ntzwrk.org');
 		chai.expect(validStats.nodeName).to.equal('phobos');
 		chai.expect(validStats.serverContact).to.equal('0x4124909FDAB6DE615DD5BFD65EE2F34DE4DB893E');
@@ -69,7 +69,7 @@ describe('Keyserver', () => {
 		chai.expect(validKeyStats.hourlyKeys[736]).to.deep.equal(new KeyStatsEntry(moment('2017-10-10 01', 'YYYY-MM-DD HH'), 42, 21));
 	});
 
-	it('fails correctly', () => {
-		chai.expect(() => Keyserver.parseHtml('')).to.throw(ParseError);
+	it('fails correctly retrieving key stats from invalid html', () => {
+		chai.expect(() => Keyserver.parseKeyStatsHtml('')).to.throw(ParseError);
 	});
 });
