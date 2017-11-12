@@ -1,5 +1,6 @@
 import * as requestPromise from 'request-promise-native';
 import * as moment from 'moment';
+import {Option, option, none} from 'm.m';
 
 import {ParseError} from './ParseError';
 import {Peer} from './Peer';
@@ -13,14 +14,34 @@ export class Keyserver {
 	/** The keyserver's hostname */
 	public hostName: string;
 
+	/** The keyserver's raw stats html */
+	private statsHtml: Option<string> = none();
+
 	/** Constructor for creating a new keyserver */
 	constructor(hostName: string) {
 		this.hostName = hostName;
 	}
 
-	/** Retrieves the server's stats and returns a promise */
-	public getStats(): Promise<Stats> {
-		return this.getCustomStats(Keyserver.parseHtml);
+	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
+	private getStatsHtml(): Promise<string> {
+		if(this.statsHtml.isEmpty) {
+			var options: requestPromise.Options = {
+				uri: 'http://' + this.hostName + ':11371/pks/lookup?op=stats',
+				timeout: 4000,
+				headers: {
+					'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
+				}
+			};
+
+			return requestPromise.get(options).then(
+				(html: string) => {
+					this.statsHtml = option(html);
+					return html;
+				}
+			);
+		} else {
+			return new Promise<string>(() => this.statsHtml.get);
+		}
 	}
 
 	/** Retrieves the server's stats and returns a promise, but takes a custom parse function */
