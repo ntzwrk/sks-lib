@@ -4,7 +4,7 @@ import {GossipPeer, MailsyncPeer} from './Peer';
 
 
 /**
- * Class representing stats of a given keyserver
+ * Class representing stats of a keyserver
  */
 export class Stats {
 	/** The keyserver's software */
