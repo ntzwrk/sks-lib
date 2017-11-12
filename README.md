@@ -1,15 +1,17 @@
 # sks-lib
 
+[![npm package](https://img.shields.io/npm/v/sks-lib.svg)](https://www.npmjs.com/package/sks-lib) [![npm license](https://img.shields.io/npm/l/sks-lib.svg)](https://github.com/ntzwrk/sks-lib/blob/develop/LICENSE.md)
+
 <table>
 	<tr>
 		<td><tt><b>develop</b></tt></td>
-		<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://travis-ci.org/ntzwrk/sks-lib.svg?branch=develop" alt="Travis Build Status for develop"></a></td>
-		<td><a href="https://david-dm.org/ntzwrk/sks-lib/develop"><img src="https://david-dm.org/ntzwrk/sks-lib/develop/status.svg" alt="Dependency Status for develop"></a></td>
+		<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://img.shields.io/travis/ntzwrk/sks-lib/develop.svg" alt="Travis Build Status for develop"></a></td>
+		<td><a href="https://david-dm.org/ntzwrk/sks-lib/develop"><img src="https://img.shields.io/david/ntzwrk/sks-lib/develop.svg" alt="Dependency Status for develop"></a></td>
 	</tr>
 	<tr>
 		<td><tt><b>master</b></tt></td>
-		<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://travis-ci.org/ntzwrk/sks-lib.svg?branch=master" alt="Travis Build Status for master"></a></td>
-		<td><a href="https://david-dm.org/ntzwrk/sks-lib/master"><img src="https://david-dm.org/ntzwrk/sks-lib/master/status.svg" alt="Dependency Status for master"></a></td>
+		<td><a href="https://travis-ci.org/ntzwrk/sks-lib"><img src="https://img.shields.io/travis/ntzwrk/sks-lib/master.svg" alt="Travis Build Status for master"></a></td>
+		<td><a href="https://david-dm.org/ntzwrk/sks-lib/master"><img src="https://img.shields.io/david/ntzwrk/sks-lib/master.svg" alt="Dependency Status for master"></a></td>
 	</tr>
 </table>
 <br />
