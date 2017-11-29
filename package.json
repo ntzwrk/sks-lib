@@ -1,6 +1,6 @@
 {
   "name": "sks-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A JavaScript/TypeScript library to interact with SKS keyservers",
   "author": "vsund",
   "license": "GPL-3.0",
@@ -24,13 +24,12 @@
   "dependencies": {
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.44",
-    "@types/moment": "^2.13.0",
     "@types/node": "^8.0.47",
     "@types/request-promise-native": "^1.0.9",
     "chai": "^4.1.2",
     "m.m": "^1.0.3",
     "mocha": "^4.0.1",
-    "moment": "^2.19.1",
+    "moment": "^2.19.3",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
     "ts-node": "^3.3.0",
