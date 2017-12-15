@@ -1,6 +1,6 @@
 {
   "name": "sks-lib",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A JavaScript/TypeScript library to interact with SKS keyservers",
   "author": "vsund",
   "license": "GPL-3.0",
