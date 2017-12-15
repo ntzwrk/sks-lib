@@ -1,6 +1,6 @@
 # sks-lib
 
-[![npm package](https://img.shields.io/npm/v/sks-lib.svg)](https://www.npmjs.com/package/sks-lib) [![npm license](https://img.shields.io/npm/l/sks-lib.svg)](https://github.com/ntzwrk/sks-lib/blob/develop/LICENSE.md)
+[![npm package](https://img.shields.io/npm/v/sks-lib.svg)](https://www.npmjs.com/package/sks-lib) [![npm license](https://img.shields.io/npm/l/sks-lib.svg)](https://github.com/ntzwrk/sks-lib/blob/develop/LICENSE.md) [![code documentation](https://img.shields.io/badge/Code-documentation-blue.svg)](https://ntzwrk.github.io/sks-lib/code/)
 
 <table>
 	<tr>

@@ -15,19 +15,23 @@ export class Keyserver {
 	/** The keyserver's hostname */
 	public hostName: string;
 
+	/** Optional port to make requests on (default: 11371) */
+	public port: number;
+
 	/** The keyserver's raw stats html */
 	private statsHtml: Option<string> = none();
 
 	/** Constructor for creating a new keyserver */
-	constructor(hostName: string) {
+	constructor(hostName: string, port: number = 11371) {
 		this.hostName = hostName;
+		this.port = port;
 	}
 
 	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
 	private getStatsHtml(): Promise<string> {
-		if(this.statsHtml.isEmpty) {
+		if(!this.statsHtml.isDefined) {
 			var options: requestPromise.Options = {
-				uri: 'http://' + this.hostName + ':11371/pks/lookup?op=stats',
+				url: 'http://' + this.hostName + ':' + this.port + '/pks/lookup?op=stats',
 				timeout: 4000,
 				headers: {
 					'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
