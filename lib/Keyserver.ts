@@ -1,6 +1,5 @@
 import * as requestPromise from 'request-promise-native';
 import * as moment from 'moment';
-import {Option, option, none} from 'm.m';
 
 import {KeyStats, KeyStatsEntry} from './KeyStats';
 import {ParseError} from './ParseError';
@@ -19,7 +18,7 @@ export class Keyserver {
 	public port: number;
 
 	/** The keyserver's raw stats html */
-	private statsHtml: Option<string> = none();
+	private statsHtml: string|undefined = undefined;
 
 	/** Constructor for creating a new keyserver */
 	constructor(hostName: string, port: number = 11371) {
@@ -29,7 +28,7 @@ export class Keyserver {
 
 	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
 	private getStatsHtml(): Promise<string> {
-		if(!this.statsHtml.isDefined) {
+		if(this.statsHtml !== undefined) {
 			var options: requestPromise.Options = {
 				url: 'http://' + this.hostName + ':' + this.port + '/pks/lookup?op=stats',
 				timeout: 4000,
@@ -40,7 +39,7 @@ export class Keyserver {
 
 			return requestPromise.get(options).then(
 				(html: string) => {
-					this.statsHtml = option(html);
+					this.statsHtml = html;
 					return html;
 				}
 			);
