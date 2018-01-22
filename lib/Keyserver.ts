@@ -28,24 +28,20 @@ export class Keyserver {
 
 	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
 	private getStatsHtml(): Promise<string> {
-		if(this.statsHtml !== undefined) {
-			var options: requestPromise.Options = {
-				url: 'http://' + this.hostName + ':' + this.port + '/pks/lookup?op=stats',
-				timeout: 4000,
-				headers: {
-					'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
-				}
-			};
+		var options: requestPromise.Options = {
+			url: 'http://' + this.hostName + ':' + this.port + '/pks/lookup?op=stats',
+			timeout: 4000,
+			headers: {
+				'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
+			}
+		};
 
-			return requestPromise.get(options).then(
-				(html: string) => {
-					this.statsHtml = html;
-					return html;
-				}
-			);
-		} else {
-			return new Promise<string>(() => this.statsHtml.get);
-		}
+		return requestPromise.get(options).then(
+			(html: string) => {
+				this.statsHtml = html;
+				return html;
+			}
+		);
 	}
 
 	/** Maps the keyserver's html to a generic promise. */
