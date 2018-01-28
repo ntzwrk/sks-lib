@@ -45,18 +45,18 @@ export class Keyserver {
 	}
 
 	/** Maps the keyserver's html to a generic promise. */
-	public mapToView<T>(transformFunction: (html: string) => T): Promise<T> {
+	public mapStatsToView<T>(transformFunction: (html: string) => T): Promise<T> {
 		return this.getStatsHtml().then(transformFunction);
 	}
 
 	/** Retrieves the server's stats and returns a Promise<Stats>, uses the default parsing method (`parseStatsHtml`). */
 	public getStats(): Promise<Stats> {
-		return this.mapToView(Keyserver.parseStatsHtml);
+		return this.mapStatsToView(Keyserver.parseStatsHtml);
 	}
 
 	/** Retrieves the server's key stats and returns a Promise<KeyStats>, uses the default parsing method (`parseKeyStatsHtml`). */
 	public getKeyStats(): Promise<KeyStats> {
-		return this.mapToView(Keyserver.parseKeyStatsHtml);
+		return this.mapStatsToView(Keyserver.parseKeyStatsHtml);
 	}
 
 	/** Parses given html into a Stats object, throws ParseError. */
