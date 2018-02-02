@@ -62,9 +62,9 @@
   version "9.4.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.0.tgz#b85a0bcf1e1cc84eb4901b7e96966aedc6f078d1"
 
-"@types/request-promise-native@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@types/request-promise-native/-/request-promise-native-1.0.13.tgz#aa37f09c7618a4b9bc88d830a9857199d31dddc5"
+"@types/request-promise-native@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@types/request-promise-native/-/request-promise-native-1.0.11.tgz#a6e9505d9ad2348f9f694f07085d021e7870000e"
   dependencies:
     "@types/request" "*"
 
