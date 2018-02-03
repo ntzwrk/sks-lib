@@ -16,7 +16,7 @@
 </table>
 <br />
 
-`sks-lib` is a Typescript library for interacting with SKS keyservers. Currently there's only support for retrieving a keyserver's stats.
+`sks-lib` is a Typescript library for interacting with SKS keyservers. Currently there's only support for retrieving statistics of a keyserver.
 
 
 ## Installation
