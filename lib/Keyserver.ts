@@ -17,6 +17,9 @@ export class Keyserver {
 	/** Optional port to make requests on (default: 11371) */
 	public port: number;
 
+	/** Base path for the keyserver (where the `/pks` paths start), (default: '') */
+	public basePath: string;
+
 	/** Request options for a query to the keyserver */
 	private requestOptions: requestPromise.RequestPromiseOptions;
 
@@ -24,11 +27,12 @@ export class Keyserver {
 	private statsHtml: string|undefined = undefined;
 
 	/** Constructor for creating a new keyserver */
-	constructor(hostName: string, port: number = 11371) {
+	constructor(hostName: string, port: number = 11371, basePath: string = '') {
 		this.hostName = hostName;
 		this.port = port;
+		this.basePath = basePath;
 		this.requestOptions = {
-			baseUrl: 'http://' + hostName + ':' + port,
+			baseUrl: 'http://' + hostName + ':' + port + '/' + basePath,
 			timeout: 4000,
 			headers: {
 				'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
