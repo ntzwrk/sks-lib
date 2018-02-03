@@ -36,7 +36,7 @@ export class Keyserver {
 		};
 	}
 
-	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
+	/** Retrieves the keyserver's html and returns it as Promise<string> */
 	private getKeyserverHtml(path: string): Promise<string> {
 		return requestPromise.get(path, this.requestOptions).then(
 			(html: string) => {
@@ -47,28 +47,28 @@ export class Keyserver {
 	}
 
 
-	/** Retrieves the keyserver's stats html and returns it as Promise<string>. */
+	/** Retrieves the keyserver's stats html and returns it as Promise<string> */
 	private getStatsHtml(): Promise<string> {
 		var path = '/pks/lookup?op=stats';
 		return this.getKeyserverHtml(path);
 	}
 
-	/** Maps the keyserver's html to a generic promise. */
+	/** Maps the keyserver's html to a generic promise */
 	public mapStatsToView<T>(transformFunction: (html: string) => T): Promise<T> {
 		return this.getStatsHtml().then(transformFunction);
 	}
 
-	/** Retrieves the server's stats and returns a Promise<Stats>, uses the default parsing method (`parseStatsHtml`). */
+	/** Retrieves the server's stats and returns a Promise<Stats>, uses the default parsing method (`parseStatsHtml`) */
 	public getStats(): Promise<Stats> {
 		return this.mapStatsToView(Keyserver.parseStatsHtml);
 	}
 
-	/** Retrieves the server's key stats and returns a Promise<KeyStats>, uses the default parsing method (`parseKeyStatsHtml`). */
+	/** Retrieves the server's key stats and returns a Promise<KeyStats>, uses the default parsing method (`parseKeyStatsHtml`) */
 	public getKeyStats(): Promise<KeyStats> {
 		return this.mapStatsToView(Keyserver.parseKeyStatsHtml);
 	}
 
-	/** Parses given html into a Stats object, throws ParseError. */
+	/** Parses given html into a Stats object, throws ParseError */
 	public static parseStatsHtml(html: string): Stats {
 		var match: RegExpMatchArray | null;
 		var matchVersion: RegExpMatchArray | null;
@@ -158,7 +158,7 @@ export class Keyserver {
 
 		// keys
 		match = html.match(/Total number of keys: ([0-9]+)/);
-		if (match) {
+		if(match) {
 			keys = parseInt(match[1], 10);
 		} else {
 			throw new ParseError('keys');
@@ -210,7 +210,7 @@ export class Keyserver {
 		);
 	}
 
-	/** Parses given html into a KeyStats object, throws ParseError. */
+	/** Parses given html into a KeyStats object, throws ParseError */
 	public static parseKeyStatsHtml(html: string): KeyStats {
 		var match: RegExpMatchArray | null;
 
@@ -221,7 +221,7 @@ export class Keyserver {
 
 		// totalKeys
 		match = html.match(/Total number of keys: ([0-9]+)/);
-		if (match) {
+		if(match) {
 			totalKeys = parseInt(match[1], 10);
 		} else {
 			throw new ParseError('totalKeys');
