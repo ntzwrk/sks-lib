@@ -1,4 +1,5 @@
 import * as requestPromise from 'request-promise-native';
+import {StatusCodeError} from 'request-promise-native/errors';
 import * as moment from 'moment';
 
 import {KeyStats, KeyStatsEntry} from './KeyStats';
@@ -52,6 +53,49 @@ export class Keyserver {
 		return requestPromise.get(path, this.requestOptions).then(
 			html => html
 		);
+	}
+
+
+	/**
+	 * Retrieves a key by a given query, throws NoKeyFoundError
+	 *
+	 * @param query query to look up
+	 */
+	public lookup(query: string): Promise<string> {
+		var path = '/pks/lookup?op=get&options=mr&search=';
+
+		return this.getKeyserverHtml(path + encodeURIComponent(query)).then(
+			(html: string) => {
+				if(Keyserver.isPgpKey(html)) {
+					return html;
+				} else {
+					throw new NoKeyFoundError();
+				}
+			}
+		).catch(
+			(error: Error) => {
+				if(error instanceof StatusCodeError) {
+					var statusError = <StatusCodeError>error;
+					if(statusError.statusCode === 404) {
+						throw new NoKeyFoundError();
+					}
+				}
+
+				throw error;
+			}
+		);
+	}
+
+	/**
+	 * Checks whether a given input is a PGP key
+	 *
+	 * @param key input to check
+	 */
+	private static isPgpKey(key: string): boolean {
+		const PGP_KEY_START = '-----BEGIN PGP PUBLIC KEY BLOCK-----';
+		const PGP_KEY_END = '-----END PGP PUBLIC KEY BLOCK-----';
+
+		return (key.indexOf(PGP_KEY_START) >= 0)  &&  (key.indexOf(PGP_KEY_END) >= 0);
 	}
 
 
