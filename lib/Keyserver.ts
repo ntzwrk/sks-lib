@@ -23,9 +23,6 @@ export class Keyserver {
 	/** Request options for a query to the keyserver */
 	private requestOptions: requestPromise.RequestPromiseOptions;
 
-	/** The keyserver's raw stats html */
-	private statsHtml: string|undefined = undefined;
-
 	/**
 	 * Constructor for creating a new keyserver
 	 *
@@ -53,10 +50,7 @@ export class Keyserver {
 	 */
 	private getKeyserverHtml(path: string): Promise<string> {
 		return requestPromise.get(path, this.requestOptions).then(
-			(html: string) => {
-				this.statsHtml = html;
-				return html;
-			}
+			html => html
 		);
 	}
 
