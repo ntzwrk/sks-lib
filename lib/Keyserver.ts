@@ -2,7 +2,7 @@ import * as requestPromise from 'request-promise-native';
 import * as moment from 'moment';
 
 import {KeyStats, KeyStatsEntry} from './KeyStats';
-import {ParseError} from './ParseError';
+import {NoKeyFoundError, ParseError} from './Errors';
 import {GossipPeer, MailsyncPeer} from './Peer';
 import {Stats} from './Stats';
 
