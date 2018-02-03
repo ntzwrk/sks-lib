@@ -26,43 +26,28 @@
 Just add it with `yarn install sks-lib` (or `npm install sks-lib`) to your project. It ships the generated Javascript code along with Typescript's declaration files. The Typescript code itself lives in `lib/`.
 
 
-## Example usage
+## Usage
 
 ```ts
-import {Keyserver} from 'sks-lib';
-import {Moment} from 'moment';
-
-
+// Create a new keyserver object to query on
 var keyserver = new Keyserver('keyserver.ntzwrk.org');
 
+// Lookup the key for "vsund" and then print it
+keyserver.lookup('vsund').then(
+	(key) => {
+		console.log(key);
+	}
+);
+
+// Get stats and then print some information
 keyserver.getStats().then(
 	(stats) => {
-		var hostName = stats.hostName;
-		var software = stats.software;
-		var version = stats.version;
-		var peerCount = stats.gossipPeerCount;
-
-		console.log('"%s" is a %s %s keyserver with %s gossip peers.', hostName, software, version, peerCount);
+		console.log('"%s" is a %s keyserver on version %s.', stats.hostName, stats.software, stats.version);
 	}
-).catch((reason: Error) => {
-	console.log('Could not connect to "%s:11371"', keyserver.hostName);
-	console.log('%s: %s', reason.name, reason.message);
-});
-
-keyserver.getKeyStats().then(
-	(keyStats) => {
-		var hostName = keyserver.hostName;
-		var totalKeys = keyStats.totalKeys;
-		var newKeys = keyStats.dailyKeys[11].newKeys;
-		var date = keyStats.dailyKeys[11].dateTime.format('MMMM Do YYYY');
-
-		console.log('"%s" has %s total keys and saw %s new keys on %s.', hostName, totalKeys, newKeys, date);
-	}
-).catch((reason: Error) => {
-	console.log('Could not connect to "%s:11371"', keyserver.hostName);
-	console.log('%s: %s', reason.name, reason.message);
-});
+);
 ```
+
+See [`examples/`](examples/) for some more examples.
 
 
 ## Documentation
