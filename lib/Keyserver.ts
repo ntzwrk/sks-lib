@@ -17,6 +17,9 @@ export class Keyserver {
 	/** Optional port to make requests on (default: 11371) */
 	public port: number;
 
+	/** Request options for a query to the keyserver */
+	private requestOptions: requestPromise.RequestPromiseOptions;
+
 	/** The keyserver's raw stats html */
 	private statsHtml: string|undefined = undefined;
 
@@ -24,24 +27,30 @@ export class Keyserver {
 	constructor(hostName: string, port: number = 11371) {
 		this.hostName = hostName;
 		this.port = port;
-	}
-
-	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
-	private getStatsHtml(): Promise<string> {
-		var options: requestPromise.Options = {
-			url: 'http://' + this.hostName + ':' + this.port + '/pks/lookup?op=stats',
+		this.requestOptions = {
+			baseUrl: 'http://' + hostName + ':' + port,
 			timeout: 4000,
 			headers: {
 				'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
 			}
 		};
+	}
 
-		return requestPromise.get(options).then(
+	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
+	private getKeyserverHtml(path: string): Promise<string> {
+		return requestPromise.get(path, this.requestOptions).then(
 			(html: string) => {
 				this.statsHtml = html;
 				return html;
 			}
 		);
+	}
+
+
+	/** Retrieves the keyserver's stats html and returns it as Promise<string>. */
+	private getStatsHtml(): Promise<string> {
+		var path = '/pks/lookup?op=stats';
+		return this.getKeyserverHtml(path);
 	}
 
 	/** Maps the keyserver's html to a generic promise. */
