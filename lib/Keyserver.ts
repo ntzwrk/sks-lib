@@ -26,7 +26,13 @@ export class Keyserver {
 	/** The keyserver's raw stats html */
 	private statsHtml: string|undefined = undefined;
 
-	/** Constructor for creating a new keyserver */
+	/**
+	 * Constructor for creating a new keyserver
+	 *
+	 * @param hostName hostname of the keyserver
+	 * @param port port of the keyserver
+	 * @param basePath base path where to find the keyserver (the path before `/pks`, usually nothing)
+	 */
 	constructor(hostName: string, port: number = 11371, basePath: string = '') {
 		this.hostName = hostName;
 		this.port = port;
@@ -40,7 +46,11 @@ export class Keyserver {
 		};
 	}
 
-	/** Retrieves the keyserver's html and returns it as Promise<string> */
+	/**
+	 * Retrieves the keyserver's html and returns it as Promise<string>
+	 *
+	 * @param path relative path to request, usually starts with `/pks`
+	 */
 	private getKeyserverHtml(path: string): Promise<string> {
 		return requestPromise.get(path, this.requestOptions).then(
 			(html: string) => {
@@ -51,28 +61,44 @@ export class Keyserver {
 	}
 
 
-	/** Retrieves the keyserver's stats html and returns it as Promise<string> */
+	/**
+	 * Retrieves the keyserver's stats html and returns it as Promise<string>
+	 */
 	private getStatsHtml(): Promise<string> {
 		var path = '/pks/lookup?op=stats';
 		return this.getKeyserverHtml(path);
 	}
 
-	/** Maps the keyserver's html to a generic promise */
+	/**
+	 * Maps the keyserver's html to a generic promise
+	 *
+	 * @param transformFunction function to transform HTML into a generic object
+	 */
 	public mapStatsToView<T>(transformFunction: (html: string) => T): Promise<T> {
 		return this.getStatsHtml().then(transformFunction);
 	}
 
-	/** Retrieves the server's stats and returns a Promise<Stats>, uses the default parsing method (`parseStatsHtml`) */
+	/**
+	 * Retrieves the server's stats and returns a Promise<Stats>,
+	 * uses the default parsing method (`parseStatsHtml`)
+	 */
 	public getStats(): Promise<Stats> {
 		return this.mapStatsToView(Keyserver.parseStatsHtml);
 	}
 
-	/** Retrieves the server's key stats and returns a Promise<KeyStats>, uses the default parsing method (`parseKeyStatsHtml`) */
+	/**
+	 * Retrieves the server's key stats and returns a Promise<KeyStats>,
+	 * uses the default parsing method (`parseKeyStatsHtml`)
+	 */
 	public getKeyStats(): Promise<KeyStats> {
 		return this.mapStatsToView(Keyserver.parseKeyStatsHtml);
 	}
 
-	/** Parses given html into a Stats object, throws ParseError */
+	/**
+	 * Parses given html into a Stats object, throws ParseError
+	 *
+	 * @param html HTML to parse, usually from a keyserver's stats page
+	 */
 	public static parseStatsHtml(html: string): Stats {
 		var match: RegExpMatchArray | null;
 		var matchVersion: RegExpMatchArray | null;
@@ -214,7 +240,11 @@ export class Keyserver {
 		);
 	}
 
-	/** Parses given html into a KeyStats object, throws ParseError */
+	/**
+	 * Parses given html into a KeyStats object, throws ParseError
+	 *
+	 * @param html HTML to parse, usually from a keyserver's stats page
+	 */
 	public static parseKeyStatsHtml(html: string): KeyStats {
 		var match: RegExpMatchArray | null;
 
