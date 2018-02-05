@@ -1,9 +1,9 @@
 import * as requestPromise from 'request-promise-native';
+import {StatusCodeError} from 'request-promise-native/errors';
 import * as moment from 'moment';
-import {Option, option, none} from 'm.m';
 
 import {KeyStats, KeyStatsEntry} from './KeyStats';
-import {ParseError} from './ParseError';
+import {NoKeyFoundError, ParseError} from './Errors';
 import {GossipPeer, MailsyncPeer} from './Peer';
 import {Stats} from './Stats';
 
@@ -18,53 +18,139 @@ export class Keyserver {
 	/** Optional port to make requests on (default: 11371) */
 	public port: number;
 
-	/** The keyserver's raw stats html */
-	private statsHtml: Option<string> = none();
+	/** Base path for the keyserver (where the `/pks` paths start), (default: '') */
+	public basePath: string;
 
-	/** Constructor for creating a new keyserver */
-	constructor(hostName: string, port: number = 11371) {
+	/** Request options for a query to the keyserver */
+	private requestOptions: requestPromise.RequestPromiseOptions;
+
+	/**
+	 * Constructor for creating a new keyserver
+	 *
+	 * @param hostName hostname of the keyserver
+	 * @param port port of the keyserver
+	 * @param basePath base path where to find the keyserver (the path before `/pks`, usually nothing)
+	 */
+	constructor(hostName: string, port: number = 11371, basePath: string = '') {
 		this.hostName = hostName;
 		this.port = port;
+		this.basePath = basePath;
+		this.requestOptions = {
+			baseUrl: 'http://' + hostName + ':' + port + '/' + basePath,
+			timeout: 4000,
+			headers: {
+				'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
+			}
+		};
 	}
 
-	/** Retrieves the keyserver's stats html if necessary and then returns it as Promise<string>. */
-	private getStatsHtml(): Promise<string> {
-		if(!this.statsHtml.isDefined) {
-			var options: requestPromise.Options = {
-				url: 'http://' + this.hostName + ':' + this.port + '/pks/lookup?op=stats',
-				timeout: 4000,
-				headers: {
-					'User-Agent': 'sks-lib (https://github.com/ntzwrk/sks-lib)'
-				}
-			};
+	/**
+	 * Retrieves the keyserver's html and returns it as Promise<string>
+	 *
+	 * @param path relative path to request, usually starts with `/pks`
+	 */
+	private getKeyserverHtml(path: string): Promise<string> {
+		return requestPromise.get(path, this.requestOptions).then(
+			html => html
+		);
+	}
 
-			return requestPromise.get(options).then(
-				(html: string) => {
-					this.statsHtml = option(html);
+
+	/**
+	 * Retrieves a key by a given query, throws NoKeyFoundError
+	 *
+	 * @param query query to look up
+	 */
+	public lookup(query: string): Promise<string> {
+		var path = '/pks/lookup?op=get&options=mr&search=';
+
+		return this.getKeyserverHtml(path + encodeURIComponent(query)).then(
+			(html: string) => {
+				if(Keyserver.isPgpKey(html)) {
 					return html;
+				} else {
+					throw new NoKeyFoundError();
 				}
-			);
-		} else {
-			return new Promise<string>(() => this.statsHtml.get);
-		}
+			}
+		).catch(
+			(error: Error) => {
+				if(error instanceof StatusCodeError) {
+					var statusError = <StatusCodeError>error;
+					if(statusError.statusCode === 404) {
+						throw new NoKeyFoundError();
+					}
+				}
+
+				throw error;
+			}
+		);
 	}
 
-	/** Maps the keyserver's html to a generic promise. */
-	public mapToView<T>(transformFunction: (html: string) => T): Promise<T> {
+	/**
+	 * Checks whether a given input is a PGP key
+	 *
+	 * @param key input to check
+	 */
+	private static isPgpKey(key: string): boolean {
+		const PGP_KEY_START = '-----BEGIN PGP PUBLIC KEY BLOCK-----';
+		const PGP_KEY_END = '-----END PGP PUBLIC KEY BLOCK-----';
+
+		return (key.indexOf(PGP_KEY_START) >= 0)  &&  (key.indexOf(PGP_KEY_END) >= 0);
+	}
+
+
+	/**
+	 * Uploads a public key onto a keyserver
+	 *
+	 * @param publicKey public key to upload
+	 */
+	public upload(publicKey: string): requestPromise.RequestPromise {
+		var path = '/pks/add';
+		var options = this.requestOptions;
+		options.form = {keytext: publicKey};
+
+		return requestPromise.post(path, options);
+	}
+
+
+	/**
+	 * Retrieves the keyserver's stats html and returns it as Promise<string>
+	 */
+	private getStatsHtml(): Promise<string> {
+		var path = '/pks/lookup?op=stats';
+		return this.getKeyserverHtml(path);
+	}
+
+	/**
+	 * Maps the keyserver's html to a generic promise
+	 *
+	 * @param transformFunction function to transform HTML into a generic object
+	 */
+	public mapStatsToView<T>(transformFunction: (html: string) => T): Promise<T> {
 		return this.getStatsHtml().then(transformFunction);
 	}
 
-	/** Retrieves the server's stats and returns a Promise<Stats>, uses the default parsing method (`parseStatsHtml`). */
+	/**
+	 * Retrieves the server's stats and returns a Promise<Stats>,
+	 * uses the default parsing method (`parseStatsHtml`)
+	 */
 	public getStats(): Promise<Stats> {
-		return this.mapToView(Keyserver.parseStatsHtml);
+		return this.mapStatsToView(Keyserver.parseStatsHtml);
 	}
 
-	/** Retrieves the server's key stats and returns a Promise<KeyStats>, uses the default parsing method (`parseKeyStatsHtml`). */
+	/**
+	 * Retrieves the server's key stats and returns a Promise<KeyStats>,
+	 * uses the default parsing method (`parseKeyStatsHtml`)
+	 */
 	public getKeyStats(): Promise<KeyStats> {
-		return this.mapToView(Keyserver.parseKeyStatsHtml);
+		return this.mapStatsToView(Keyserver.parseKeyStatsHtml);
 	}
 
-	/** Parses given html into a Stats object, throws ParseError. */
+	/**
+	 * Parses given html into a Stats object, throws ParseError
+	 *
+	 * @param html HTML to parse, usually from a keyserver's stats page
+	 */
 	public static parseStatsHtml(html: string): Stats {
 		var match: RegExpMatchArray | null;
 		var matchVersion: RegExpMatchArray | null;
@@ -154,7 +240,7 @@ export class Keyserver {
 
 		// keys
 		match = html.match(/Total number of keys: ([0-9]+)/);
-		if (match) {
+		if(match) {
 			keys = parseInt(match[1], 10);
 		} else {
 			throw new ParseError('keys');
@@ -206,7 +292,11 @@ export class Keyserver {
 		);
 	}
 
-	/** Parses given html into a KeyStats object, throws ParseError. */
+	/**
+	 * Parses given html into a KeyStats object, throws ParseError
+	 *
+	 * @param html HTML to parse, usually from a keyserver's stats page
+	 */
 	public static parseKeyStatsHtml(html: string): KeyStats {
 		var match: RegExpMatchArray | null;
 
@@ -217,7 +307,7 @@ export class Keyserver {
 
 		// totalKeys
 		match = html.match(/Total number of keys: ([0-9]+)/);
-		if (match) {
+		if(match) {
 			totalKeys = parseInt(match[1], 10);
 		} else {
 			throw new ParseError('totalKeys');

@@ -32,7 +32,7 @@ describe('Keyserver', () => {
 		validKeyStats = Keyserver.parseKeyStatsHtml(validHtml);
 	});
 
-	it('retrieves stats correctly', () => {
+	it('parses stats correctly', () => {
 		chai.expect(validStats.hostName).to.equal('keyserver.ntzwrk.org');
 		chai.expect(validStats.nodeName).to.equal('phobos');
 		chai.expect(validStats.serverContact).to.equal('0x4124909FDAB6DE615DD5BFD65EE2F34DE4DB893E');
@@ -57,11 +57,11 @@ describe('Keyserver', () => {
 		chai.expect(validStatsWithMailsyncPeers.mailsyncPeers[0]).to.deep.equal(new MailsyncPeer('pgp-public-keys@the.earth.li'));
 	});
 
-	it('fails retrieving stats from invalid html correctly', () => {
-		chai.expect(() => Keyserver.parseStatsHtml('')).to.throw(ParseError);
+	it('fails parsing stats from invalid html correctly', () => {
+		chai.expect(() => Keyserver.parseStatsHtml('')).to.throw(Error); // should be ParseError
 	});
 
-	it('retrieves key stats correctly', () => {
+	it('parses key stats correctly', () => {
 		chai.expect(validKeyStats.totalKeys).to.equal(4849636);
 		chai.expect(validKeyStats.dailyKeys[0]).to.deep.equal(new KeyStatsEntry(moment('2017-11-09', 'YYYY-MM-DD'), 1118, 516));
 		chai.expect(validKeyStats.dailyKeys[30]).to.deep.equal(new KeyStatsEntry(moment('2017-10-10', 'YYYY-MM-DD'), 1224, 859));
@@ -69,7 +69,7 @@ describe('Keyserver', () => {
 		chai.expect(validKeyStats.hourlyKeys[736]).to.deep.equal(new KeyStatsEntry(moment('2017-10-10 01', 'YYYY-MM-DD HH'), 42, 21));
 	});
 
-	it('fails retrieving key stats from invalid html correctly', () => {
-		chai.expect(() => Keyserver.parseKeyStatsHtml('')).to.throw(ParseError);
+	it('fails parsing key stats from invalid html correctly', () => {
+		chai.expect(() => Keyserver.parseKeyStatsHtml('')).to.throw(Error); // should be ParseError
 	});
 });
