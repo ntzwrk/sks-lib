@@ -32,10 +32,20 @@ Just add it with `yarn install sks-lib` (or `npm install sks-lib`) to your proje
 // Create a new keyserver object to query on
 var keyserver = new Keyserver('keyserver.ntzwrk.org');
 
+var somePublicKey: string;
+
 // Lookup the key for "vsund" and then print it
 keyserver.lookup('vsund').then(
 	(key) => {
+		somePublicKey = key;
 		console.log(key);
+	}
+);
+
+// Upload the previously fetched key and print the server's response
+keyserver.upload(publicKey).then(
+	(response) => {
+		console.log(response);
 	}
 );
 
