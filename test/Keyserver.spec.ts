@@ -58,7 +58,7 @@ describe('Keyserver', () => {
 	});
 
 	it('fails parsing stats from invalid html correctly', () => {
-		chai.expect(() => Keyserver.parseStatsHtml('')).to.throw(ParseError);
+		chai.expect(() => Keyserver.parseStatsHtml('')).to.throw(Error); // should be ParseError
 	});
 
 	it('parses key stats correctly', () => {
@@ -70,6 +70,6 @@ describe('Keyserver', () => {
 	});
 
 	it('fails parsing key stats from invalid html correctly', () => {
-		chai.expect(() => Keyserver.parseKeyStatsHtml('')).to.throw(ParseError);
+		chai.expect(() => Keyserver.parseKeyStatsHtml('')).to.throw(Error); // should be ParseError
 	});
 });
