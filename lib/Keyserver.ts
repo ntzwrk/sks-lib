@@ -100,6 +100,20 @@ export class Keyserver {
 
 
 	/**
+	 * Uploads a public key onto a keyserver
+	 *
+	 * @param publicKey public key to upload
+	 */
+	public upload(publicKey: string): requestPromise.RequestPromise {
+		var path = '/pks/add';
+		var options = this.requestOptions;
+		options.form = {keytext: publicKey};
+
+		return requestPromise.post(path, options);
+	}
+
+
+	/**
 	 * Retrieves the keyserver's stats html and returns it as Promise<string>
 	 */
 	private getStatsHtml(): Promise<string> {
