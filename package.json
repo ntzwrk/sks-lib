@@ -22,20 +22,20 @@
     "document": "typedoc --out docs/code/ ./lib/ --sourcefile-url-prefix https://github.com/ntzwrk/sks-lib/blob/master/lib/"
   },
   "dependencies": {
-    "@types/node": "^10.3.4",
-    "@types/request-promise-native": "1.0.15",
+    "@types/node": "^10.10.1",
+    "@types/request-promise-native": "^1.0.15",
     "moment": "^2.22.2",
-    "request": "^2.87.0",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.3"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.2",
+    "@types/mocha": "^5.2.5",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "ts-node": "^6.1.1",
-    "typedoc": "^0.11.1",
+    "ts-node": "^7.0.1",
+    "typedoc": "^0.12.0",
     "typedoc-plugin-sourcefile-url": "^1.0.3"
   }
 }
